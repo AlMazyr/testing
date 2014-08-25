@@ -1,12 +1,12 @@
 .PHONY : all clean
 
 TARGET:=bubble_sort
-CXX:=gcc
+CXX:=g++
 CXX_FLAGS:=-c -MD -Wall
 LD_FLAGS:=-o
 
-SRC_LIST:=$(wildcard *.c)
-OBJ_LIST:=$(patsubst %.c, %.o, $(SRC_LIST))
+SRC_LIST:=$(wildcard *.cpp)
+OBJ_LIST:=$(patsubst %.cpp, %.o, $(SRC_LIST))
 
 all : $(TARGET)
 

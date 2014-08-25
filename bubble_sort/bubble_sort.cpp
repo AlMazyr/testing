@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <iostream>
 
+// Bubble sort realization.
 // o(n2)
+
+// simple c style.
 void bubble_sort(int *arr, size_t n) {
 	int temp = 0, i, j;
 	for(i = 0; i < (n - 1); ++i) {
@@ -19,9 +23,9 @@ void bubble_sort(int *arr, size_t n) {
 }
 
 
-// common bubble sort
+// common bubble sort c style.
 void bubble_sort_common(void* el, size_t e_sz, size_t n, int (*predicat)(void* prev, void* next)) {
-	int temp = 0, i, j;
+	int i, j;
 	char temp1[20];
 	for(i = 0; i < (n - 1); ++i) {
 		for(j = 0; j < (n - i - 1); ++j) {
@@ -35,6 +39,18 @@ void bubble_sort_common(void* el, size_t e_sz, size_t n, int (*predicat)(void* p
 
 	
 }
+
+// common bubble sort c++ style.
+template<typename T>
+void bubble_sort_cull(T *arr, int n) {
+	for(int i = 0; i < n - 1; ++i) {
+		for(int j = 0; j < n - i - 1; ++j) {
+			if(arr[j] > arr[j + 1])
+				std::swap(arr[j], arr[j + 1]);
+		}
+	}
+}
+
 
 
 int predicat_int(void *prev, void *next) {
@@ -62,8 +78,8 @@ int main(int argc, char *argv[]) {
 	}
 	printf("\n");
 
-	bubble_sort_common(test_arr, sizeof(test_arr[0]), 10, predicat_double);
-	
+	//bubble_sort_common(test_arr, sizeof(test_arr[0]), 10, predicat_double);
+	bubble_sort_cull(test_arr, 10);
 
 	for(i = 0; i < 10; ++i) {
 		printf("[%f] ", test_arr[i]);
