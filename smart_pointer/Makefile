@@ -1,6 +1,6 @@
 .PHONY : all clean
 
-TARGET:=bubble_sort
+TARGET:=smart_pointer
 CXX:=g++
 CXX_FLAGS:=-c -MD -Wall
 LD_FLAGS:=-o
