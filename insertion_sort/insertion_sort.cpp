@@ -4,27 +4,37 @@
 using namespace std;
 
 
-// Insertion sort for int.
+// Simple insetion sort.
 void insert_sort(int *arr, int n) {
-    int key = 0, j = 0;
-    bool insert = false;
-    for(int i = 1; i < n; ++i) {
-        key = arr[i];
-        j = i;
-        while(j > 0) {
-            if(key >= arr[j - 1]) break;
-            arr[j] = arr[j - 1];
-            insert = true;
-            j--;
-        }
-        if(insert) {
-            arr[j] = key;
-            insert = false;
-        }
-        
-    }
+	int key = 0, i = 0, j = 0;
+	bool insert = false;
+
+	for(i = 1; i < n; ++i) {
+		key = arr[i];
+
+		for(j = i; j > 0; --j) {
+			if(arr[j - 1] <= key)
+				break;
+			arr[j] = arr[j - 1];
+			insert = true;
+		}
+
+		if(insert) {
+			arr[j] = key;
+			insert = false;
+		}
+	}
 }
 
+// c++ style
+template<class T> 
+void InsertionSortCull(T *arr, int n) {
+	for(int i = 1; i < n; ++i) {
+		for(int j = i; j && (arr[j - 1] > arr[j]); --j) {
+			std::swap(arr[j], arr[j - 1]);
+		}
+	}
+}
 
 int main(int argc, char* argv[]) {
 
@@ -35,7 +45,8 @@ int main(int argc, char* argv[]) {
     }
     printf("\n");
 
-    insert_sort(mass, 10);
+//    insert_sort(mass, 10);
+    InsertionSortCull(mass, 10);
 
     for(int i = 0; i < 10; ++i) {
         printf("[%d] ", mass[i]);
