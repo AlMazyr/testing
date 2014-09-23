@@ -6,6 +6,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    connect(ui->horizontalSlider, SIGNAL(valueChanged(int)),
+            ui->progressBar, SLOT(setValue(int)));
+    connect(ui->horizontalSlider, SIGNAL(valueChanged(int)),
+            ui->progressBar_2, SLOT(setValue(int)));
+    connect(ui->horizontalSlider, SIGNAL(valueChanged(int)),
+            ui->progressBar_3, SLOT(setValue(int)));
+    connect(ui->horizontalSlider, SIGNAL(valueChanged(int)),
+            ui->progressBar_4, SLOT(setValue(int)));
 }
 
 MainWindow::~MainWindow()
