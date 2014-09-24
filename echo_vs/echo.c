@@ -7,18 +7,21 @@ int main(int argc, char *argv[]) {
 	
 	if(argc < 2)
 		return 0;
-		
-	if(!memcmp(argv[1], "-n", 2)) {
-		flag = 1;
-		i = 2;
-	}
 
-	for(; i < argc; ++i) {
-		printf("%s ", argv[i]);
+    if(argc > 1 && argv[1][0] == '-' && argv[1][1] == 'n') {
+        flag = 1;
+        argc++;
+        argv--;
+    }
+
+	for(i = 1; i < argc; ++i) {
+        fputs(argv[i], stdout);
+        if(i < argc - 1)
+            putchar(' ');
 	}
 
 	if(!flag)
-		printf("\n");
+		putchar('\n');
 
 	return 0;
 }
