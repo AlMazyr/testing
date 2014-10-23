@@ -9,6 +9,8 @@ extern void afunc(void);
 int bss_var; // must be in bss segment
 int data_var = 42;  //must be in data segment
 
+extern char **environ;
+
 int main(int argc, char *argv[]) {
 
     char *p, *b, *nb;
@@ -17,6 +19,11 @@ int main(int argc, char *argv[]) {
 
     printf("\tAddress of main: %p\n", main);
     printf("\tAddress of afunc: %p\n", afunc);
+
+    printf("Main arguments:\n");
+    printf("\tAddress of argc: %p\n", &argc);
+    printf("\tAddress of string in argv: %p\n", &argv[0][0]);
+    printf("\tAddress of first environ string: %p\n", &environ[0][0]);
 
     printf("Stack Locations. \n");
     afunc();
