@@ -18,11 +18,16 @@ int main(int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
 
-    if((fd1 = open(argv[1], O_RDONLY)) == -1 ) {
+    if(argv[1][0] == '-') {
+        fd1 = 0;
+    } else if((fd1 = open(argv[1], O_RDONLY)) == -1 ) {
        fprintf(stderr, "Cannot read file <%s>, err: %s.\n", argv[1], strerror(errno));
        return EXIT_FAILURE;
     }
-    if((fd2 = open(argv[2], O_WRONLY)) == -1 ) {
+
+    if(argv[2][0] == '-') {
+        fd2 = 1;
+    } else if((fd2 = open(argv[2], O_WRONLY)) == -1 ) {
        fprintf(stderr, "Cannot read file <%s>, err: %s.\n", argv[2], strerror(errno));
        return EXIT_FAILURE;
     }
