@@ -1,64 +1,48 @@
 #include <iostream>
 #include <vector>
-#include <deque>
-#include <queue>
-#include <stack>
-#include <list>
+#include <algorithm>
 
 using namespace std;
 
 int main(int argc, char *argv[]) {
    
-    // vector 
-    vector<int> v;
+    vector<int> test;
+    vector<int>::iterator it;
 
-    for(int i = 0; i < 5; ++i) {
-        v.push_back(i);
+    // entering the numbers into vector.
+    cout << "Please input count of numbers:\n";
+    int n, value;
+    cin >> n;
+    for(int i = 0; i < n; ++i) {
+        cout << "Please input " << i << " number: ";
+        cin >> value;
+        test.push_back(value);
     }
-
-    for(int i = 0; i < v.size(); ++i) {
-        cout << v[i] << " ";
-    }
-    cout << endl;
-
-
-    // deque
-    deque<int> d;
-    for(int i = 0; i < 10; ++i) {
-        d.push_back(i);
-        d.push_front(10 - i);
-    }
-
-    for(int i = 0; i < d.size(); ++i) {
-        cout << d[i] << " ";
-    }
-    cout << endl;
     
+    // Search for the minimum.
+    it = min_element(test.begin(), test.end());
+    cout << "min: " << *it << endl;
 
-    //queue
-    queue<int> q;
-    for(int i = 0; i < 10; ++i) {
-        q.push(i);
-    }
+    // Search for the maximum.
+    it = max_element(test.begin(), test.end());
+    cout << "max: " << *it << endl;
 
-    for(int i = 0; i < q.size(); ++i) {
-        cout << q.front() << " " << q.back() << " ";
-        q.pop();
-    }
-    cout << endl;
+    // Sorting.
+    sort(test.begin(), test.end());
 
-    // stack
-    stack<int> s;
-    for(int i = 0; i < 6; ++i) {
-        cout << "Push " << i << " to stack.\n";
-        s.push(i);
-    }
+    // Searching 3.
+    it = find(test.begin(), test.end(), 3);
 
-    for(int i = 0; i < s.size(); ++i) {
-        cout << s.top() << " ";
-        s.pop();
+    // reverse of all elements from 3 to end.
+    reverse(it, test.end());
+
+    // printing all elements.
+    for (it = test.begin(); it != test.end(); ++it) {
+        cout << *it << ' ';
     }
     cout << endl;
+
+
 
     return 0;
 }
