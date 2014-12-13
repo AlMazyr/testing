@@ -5,7 +5,12 @@
 #include <string.h>
 
 int main(int argc, char *argv[]){
-	
+
+	if(argc < 3) {
+		fprintf(stderr, "Err arguments. Usage %s <NEW PROGRAMM NAME> <ARG>.\n", argv[0]);
+		return -1;
+	}	
+
 	pid_t pid;
 
 	printf("Hello!. I am the new process. My PID is %d.\n", getpid());
@@ -18,7 +23,7 @@ int main(int argc, char *argv[]){
 		return -1;
 	} else if(pid == 0) {
 		printf("I am child process! My PID is %d. My parent PID is %d.\n", getpid(), getppid());
-		execlp("echo", "echo", "Hello!", 0);
+		execlp(argv[1], argv[1], argv[2], 0);
 		
 		fprintf(stderr, "Fail on start programm. Err: %s.\n", strerror(errno));
 		return -1;
