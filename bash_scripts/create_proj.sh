@@ -9,23 +9,30 @@ then
     exit 1
 fi
 
-WORK_DIR=`pwd`/$1
-PATTERNS_DIR="/home/mazyrin/testing_stuff/patterns"
-C_SOURCE=$PATTERNS_DIR/main_pattern.c
-CPP_SOURCE=$PATTERNS_DIR/main_pattern.cpp
-C_MAKE=$PATTERNS_DIR/c_makefile/Makefile
-CPP_MAKE=$PATTERNS_DIR/cpp_makefile/Makefile
+#names
+WORKSPACE_NM="workspace_stuff"
+PATTERNS_DIR_NM="patterns"
+C_SRC_NM="main_pattern.c"
+CPP_SRC_NM="main_pattern.cpp"
 
-mkdir $WORK_DIR
+#paths
+WORK_DIR_PATH=`pwd`/$1
+PATTERNS_DIR_PATH="$HOME/$WORKSPACE_NM/$PATTERNS_DIR_NM"
+C_SRC_PATH=$PATTERNS_DIR_PATH/$C_SRC_NM
+CPP_SRC_PATH=$PATTERNS_DIR_PATH/$CPP_SRC_NM
+C_MAKE_PATH=$PATTERNS_DIR_PATH/c_makefile/Makefile
+CPP_MAKE_PATH=$PATTERNS_DIR_PATH/cpp_makefile/Makefile
+
+mkdir $WORK_DIR_PATH
 
 case $2 in
     c)
-        MAKE_FILE=$C_MAKE
-        cp $C_SOURCE $WORK_DIR/$1.c
+        MAKE_FILE=$C_MAKE_PATH
+        cp $C_SRC_PATH $WORK_DIR_PATH/$1.c
         ;;
     cpp)
-        MAKE_FILE=$CPP_MAKE
-        cp $CPP_SOURCE $WORK_DIR/$1.cpp
+        MAKE_FILE=$CPP_MAKE_PATH
+        cp $CPP_SRC_PATH $WORK_DIR_PATH/$1.cpp
         ;;
     *)
         echo "Bad project type. Use \"c\" or \"cpp\"."
@@ -33,7 +40,7 @@ case $2 in
         ;;
 esac
 
-cp $MAKE_FILE $WORK_DIR/
+cp $MAKE_FILE $WORK_DIR_PATH/
 
 exit 0
 
