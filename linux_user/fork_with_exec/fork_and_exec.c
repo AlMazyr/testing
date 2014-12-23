@@ -13,7 +13,7 @@ int main(int argc, char *argv[]){
 
 	pid_t pid;
 
-	printf("Hello!. I am the new process. My PID is %d.\n", getpid());
+	printf("Hello! I am the new process. My PID is %d.\n", getpid());
 
 	puts("Forking.");
 
