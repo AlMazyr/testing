@@ -10,7 +10,6 @@ then
 fi
 
 #names
-WORKSPACE_NM="workspace_stuff"
 PATTERNS_DIR_NM="patterns"
 C_SRC_NM="main_pattern.c"
 CPP_SRC_NM="main_pattern.cpp"
