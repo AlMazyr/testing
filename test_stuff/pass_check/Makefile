@@ -1,6 +1,6 @@
 .PHONY : all clean
 
-TARGET:=
+TARGET:=pass_check
 CXX:=g++
 CXX_FLAGS:=-c -MD -Wall
 LD_FLAGS:=-o
