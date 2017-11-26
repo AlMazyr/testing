@@ -1,5 +1,5 @@
 #!/bin/bash
 
-notify-send -u critical "$(xsel -o)" "$(wget -U "Mozilla/5.0" -qO - "http://translate.google.com/translate_a/t?client=t&text=$(xsel -o | sed "s/[\"'<>]//g")&sl=auto&tl=ru" | sed 's/\[\[\[\"//' | cut -d \" -f 1)"
+notify-send -t 5 -u critical "$(xsel -o | trans -no-ansi -b -l ru -t ru)"
 
 exit 0
